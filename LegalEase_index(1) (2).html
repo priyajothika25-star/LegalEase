@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LegalEase - AI Powered Legal Document Generator</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f4f6f8;color:#222}
+header{background:#1f2937;color:white;padding:25px;text-align:center}header h1{margin:0;font-size:36px}
+header p{margin-top:10px;font-size:18px}.container{max-width:800px;margin:40px auto;padding:30px;background:white;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,.1)}
+h2{text-align:center;margin-bottom:25px}label{display:block;margin-top:20px;margin-bottom:8px;font-weight:bold}
+select,input,textarea{width:100%;padding:12px;font-size:16px;border:1px solid #ccc;border-radius:6px}textarea{min-height:120px;resize:vertical}
+button{width:100%;margin-top:25px;padding:14px;font-size:17px;font-weight:bold;background:#2563eb;color:white;border:none;border-radius:6px;cursor:pointer}
+#result{display:none;margin-top:30px;padding:20px;background:#f9fafb;border:1px solid #ddd;border-radius:8px}footer{text-align:center;padding:20px;color:#666}
+</style>
+</head>
+<body>
+<header><h1>LegalEase</h1><p>AI Powered Legal Document Generator</p></header>
+<div class="container">
+<h2>Create Your Legal Document</h2>
+<label for="documentType">Document Type</label>
+<select id="documentType">
+<option value="">Select Document Type</option><option value="rental">Rental Agreement</option>
+<option value="nda">Non-Disclosure Agreement</option><option value="employment">Employment Agreement</option>
+<option value="affidavit">Affidavit</option><option value="notice">Legal Notice</option>
+</select>
+<label for="name">Your Name</label><input type="text" id="name" placeholder="Enter your name">
+<label for="details">Document Details</label><textarea id="details" placeholder="Enter the details required for your legal document..."></textarea>
+<button onclick="generateDocument()">Generate Legal Document</button>
+<div id="result"><h3>Generated Document</h3><p id="documentOutput"></p></div>
+</div>
+<footer>© 2026 LegalEase | AI Powered Legal Document Generator</footer>
+<script>
+function generateDocument(){
+const t=document.getElementById("documentType").value,n=document.getElementById("name").value,d=document.getElementById("details").value;
+if(!t){alert("Please select a document type.");return} if(!n.trim()){alert("Please enter your name.");return}
+const names={rental:"Rental Agreement",nda:"Non-Disclosure Agreement",employment:"Employment Agreement",affidavit:"Affidavit",notice:"Legal Notice"};
+document.getElementById("documentOutput").innerHTML="<strong>Document Type:</strong> "+names[t]+"<br><br><strong>Name:</strong> "+n+"<br><br><strong>Details:</strong><br>"+(d||"No additional details provided.");
+document.getElementById("result").style.display="block";
+}
+</script>
+</body>
+</html>
